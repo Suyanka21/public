@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920" />
+  <title>Sandile After Hours × Martell Cognac — Sponsorship Proposal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700;1,900&family=DM+Mono:wght@300;400;500&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    /* === DESIGN TOKENS ============================================== */
+    :root {
+      --bg: #080806;
+      --bg-2: #0e0c08;
+      --cream: #f5edd6;
+      --cream-soft: rgba(245, 237, 214, 0.72);
+      --cream-mute: rgba(245, 237, 214, 0.5);
+      --cream-faint: rgba(245, 237, 214, 0.28);
+      --cream-ghost: rgba(245, 237, 214, 0.08);
+      --cognac: #c8893a;
+      --cognac-deep: #8b5a1f;
+      --rule: rgba(245, 237, 214, 0.14);
+
+      --serif: "Playfair Display", "Times New Roman", serif;
+      --mono: "DM Mono", "JetBrains Mono", ui-monospace, monospace;
+      --sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      color: var(--cream);
+      font-family: var(--sans);
+      font-feature-settings: "kern", "liga", "calt";
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* === DECK SHELL ================================================ */
+    .deck {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      padding: 24px 0 64px;
+      background: #000;
+    }
+
+    /* Each slide is a fixed 1920x1080 canvas — looks great on screen
+       and prints to a single landscape page via @page rules. */
+    .slide {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      background: var(--bg);
+      color: var(--cream);
+      overflow: hidden;
+      page-break-after: always;
+      break-after: page;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+    }
+
+    .slide:last-of-type { page-break-after: auto; }
+
+    /* === GRAIN OVERLAY ============================================== */
+    .grain {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 50;
+      background-image: url("../assets/textures/grain_overlay_01.png");
+      background-size: 600px 600px;
+      opacity: 0.18;
+      mix-blend-mode: overlay;
+    }
+
+    /* === SHARED CHROME ============================================= */
+    .kicker {
+      font-family: var(--mono);
+      font-weight: 400;
+      font-size: 18px;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+      color: var(--cognac);
+    }
+
+    .label-mono {
+      font-family: var(--mono);
+      font-weight: 400;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--cream-mute);
+    }
+
+    .body-serif {
+      font-family: var(--sans);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--cream-soft);
+      line-height: 1.55;
+    }
+
+    .body-mono {
+      font-family: var(--mono);
+      font-weight: 400;
+      color: var(--cream-soft);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 900;
+      color: var(--cream);
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+      margin: 0;
+    }
+
+    .display-xl { font-size: 168px; }
+    .display-lg { font-size: 132px; }
+    .display-md { font-size: 104px; }
+    .display-sm { font-size: 80px; }
+
+    .accent { color: var(--cognac); }
+
+    .rule-top { border-top: 1px solid var(--rule); }
+    .rule-bot { border-bottom: 1px solid var(--rule); }
+
+    /* === PAGINATION INDEX (right side) ============================= */
+    .page-index {
+      position: absolute;
+      right: 48px;
+      bottom: 36px;
+      font-family: var(--mono);
+      font-size: 14px;
+      letter-spacing: 0.42em;
+      color: var(--cream-faint);
+    }
+
+    /* === BOTTOM LOGO BAR (slides 01 + 14) =========================== */
+    .footer-bar {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 96px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 64px;
+      border-top: 1px solid var(--rule);
+      background: rgba(8, 8, 6, 0.92);
+      z-index: 40;
+    }
+    .footer-bar .sandile-mark {
+      height: 36px;
+      width: auto;
+    }
+    .footer-bar .center-line {
+      flex: 1;
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 14px;
+      letter-spacing: 0.5em;
+      color: var(--cognac);
+      text-transform: uppercase;
+    }
+    /* Martell official mark — keep navy/gold brand colors (sourced online).
+       Lifts off the obsidian via a faint inner glow + soft halo. */
+    .footer-bar .martell-mark {
+      height: 76px;
+      width: auto;
+      filter: drop-shadow(0 0 16px rgba(245, 237, 214, 0.10));
+    }
+
+    /* ============================================================== */
+    /* SLIDE 01 — COVER                                                */
+    /* ============================================================== */
+    .s01-grid {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .s01-left {
+      position: relative;
+      padding: 96px 0 156px 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 32px;
+      background: linear-gradient(90deg, var(--bg) 70%, rgba(8,8,6,0) 100%);
+      z-index: 3;
+    }
+    .s01-right {
+      position: relative;
+    }
+    .s01-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      /* FIX 06 (Slide 01 specific): warm the MÖRDA photo to match deck */
+      filter: brightness(0.98) sepia(0.16) saturate(0.92) contrast(1.02);
+    }
+    .s01-photo-veil {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(8,8,6,1) 0%, rgba(8,8,6,0.05) 35%, rgba(8,8,6,0) 60%),
+        radial-gradient(ellipse at 70% 50%, rgba(200,137,58,0.06) 0%, rgba(8,8,6,0) 60%);
+      mix-blend-mode: normal;
+      z-index: 2;
+    }
+    .s01-h1 {
+      font-size: 168px;
+      line-height: 0.92;
+      letter-spacing: -0.015em;
+    }
+    .s01-tagline {
+      font-family: var(--mono);
+      font-size: 22px;
+      letter-spacing: 0.42em;
+      color: var(--cognac);
+      text-transform: uppercase;
+    }
+    .s01-meta {
+      font-family: var(--mono);
+      font-size: 16px;
+      letter-spacing: 0.32em;
+      color: var(--cream-mute);
+      text-transform: uppercase;
+      margin-top: 32px;
+    }
+    .s01-corner-mark {
+      position: absolute;
+      top: 48px;
+      left: 56px;
+      height: 28px;
+      width: auto;
+      opacity: 0.72;
+    }
+
+    /* ============================================================== */
+    /* SLIDE 02 — ABOUT                                                */
+    /* ============================================================== */
+    .s02 { padding: 96px 120px; }
+    .s02-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 96px;
+      height: 100%;
+      z-index: 3;
+    }
+    .s02-left { display: flex; flex-direction: column; gap: 36px; padding-top: 36px; }
+    .s02-headline { font-size: 116px; line-height: 0.96; }
+    .s02-body {
+      font-family: var(--sans);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 24px;
+      line-height: 1.55;
+      color: var(--cream-soft);
+      max-width: 640px;
+    }
+    .s02-stats {
+      margin-top: 32px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      max-width: 720px;
+    }
+    .stat {
+      border: 1px solid var(--rule);
+      padding: 28px 22px 22px;
+      text-align: center;
+      background: rgba(245, 237, 214, 0.015);
+    }
+    .stat-num {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 900;
+      font-size: 68px;
+      color: var(--cognac);
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .stat-lbl {
+      margin-top: 10px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.32em;
+      color: var(--cream-mute);
+      text-transform: uppercase;
+    }
+    /* FIX 07: photo grid for slide 02 — 2x2 with brightness boost on bottom */
+    .s02-photos {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 12px;
+      height: 100%;
+    }
+    .s02-photos > .ph {
+      position: relative;
+      overflow: hidden;
+      background: #14110a;
+    }
+    .s02-photos > .ph img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: sepia(0.08) saturate(0.92) brightness(1.0);
+    }
+    .s02-photos > .ph-1 { grid-row: 1 / span 1; grid-column: 1 / span 1; }
+    .s02-photos > .ph-2 { grid-row: 1 / span 2; grid-column: 2 / span 1; }
+    .s02-photos > .ph-3 { grid-row: 2 / span 1; grid-column: 1 / span 1; }
+
+    /* ============================================================== */
+    /* SLIDE 03 — CULTURAL SHIFT (full bleed)                          */
+    /* ============================================================== */
+    .s03-bg {
+      position: absolute; inset: 0;
+      background-image: url("../assets/images/editorial/afrohouse_movement_01.jpg");
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.55) saturate(0.85) contrast(1.05);
+    }
+    .s03-veil {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(8,8,6,0.55) 0%, rgba(8,8,6,0.72) 60%, rgba(8,8,6,0.92) 100%);
+    }
+    .s03-content {
+      position: absolute;
+      inset: 0;
+      padding: 96px 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 3;
+    }
+    .s03-headline {
+      max-width: 1400px;
+      font-size: 120px;
+      line-height: 0.98;
+      margin-top: 24px;
+    }
+    .s03-body {
+      max-width: 1080px;
+      font-family: var(--sans);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 22px;
+      line-height: 1.6;
+      color: var(--cream-soft);
+      margin-top: 24px;
+    }
+    .s03-tags {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .s03-tag {
+      border: 1px solid var(--rule);
+      padding: 14px 22px;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.34em;
+      color: var(--cream-soft);
+      text-transform: uppercase;
+      background: rgba(8,8,6,0.4);
+    }
+
+    /* ============================================================== */
+    /* SLIDE 04 — CONCEPT                                              */
+    /* ============================================================== */
+    .s04 { padding: 96px 120px; }
+    .s04-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 96px;
+      height: 100%;
+      z-index: 3;
+    }
+    .s04-left { display: flex; flex-direction: column; gap: 40px; padding-top: 36px; }
+    .s04-headline { font-size: 116px; line-height: 0.96; }
+    .s04-spec { display: flex; flex-direction: column; gap: 6px; }
+    .s04-spec .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.34em; color: var(--cognac); text-transform: uppercase; }
+    .s04-spec .value {
+      font-family: var(--sans);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 22px;
+      color: var(--cream-soft);
+      line-height: 1.5;
+      max-width: 600px;
+    }
+    /* FIX 04: slide 04 right-side image grid — venue establishing on top, sundowner + b2b crowd below */
+    .s04-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1.4fr 1fr;
+      gap: 12px;
+      height: 100%;
+    }
+    .s04-photos > .ph {
+      position: relative;
+      overflow: hidden;
+      background: #14110a;
+    }
+    .s04-photos > .ph img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: sepia(0.12) saturate(0.9) brightness(0.95);
+    }
+    .s04-photos > .ph-top { grid-row: 1 / span 1; grid-column: 1 / span 2; }
+    /* Slide 04 spec block bottom-aligned content */
+    .s04-specs-stack { display: flex; flex-direction: column; gap: 28px; }
+
+    /* ============================================================== */
+    /* SLIDE 05 — HEADLINING ARTIST                                    */
+    /* ============================================================== */
+    .s05-grid {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+    }
+    .s05-left {
+      position: relative;
+      padding: 120px 80px 120px 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 32px;
+      z-index: 3;
+    }
+    .s05-name { font-size: 196px; line-height: 0.92; }
+    .s05-origin {
+      font-family: var(--mono);
+      font-size: 18px;
+      letter-spacing: 0.42em;
+      color: var(--cognac);
+      text-transform: uppercase;
+    }
+    .s05-bio {
+      font-family: var(--sans);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 22px;
+      line-height: 1.6;
+      color: var(--cream-soft);
+      max-width: 640px;
+    }
+    .s05-tags {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+    .s05-tags .s03-tag {
+      background: transparent;
+    }
+    .s05-right {
+      position: relative;
+      overflow: hidden;
+    }
+    /* FIX 03: brighter MÖRDA photo on slide 05, lighter gradient overlay */
+    .s05-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      filter: brightness(1.04) contrast(1.04) saturate(0.95);
+    }
+    .s05-veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        var(--bg) 0%,
+        rgba(8,8,6,0.5) 25%,
+        rgba(8,8,6,0.1) 50%,
+        rgba(8,8,6,0.05) 100%
+      );
+      z-index: 2;
+    }
+
+    /* ============================================================== */
+    /* SLIDE 06 — THE CURATION (3x3 lineup)                            */
+    /* ============================================================== */
+    /* FIX 01: Complete rebuild of lineup grid — CSS classes only,
+       no inline styles, 3 rows × 3 columns, brighter photos. */
+    .s06 { padding: 56px 80px 64px; display: flex; flex-direction: column; gap: 24px; }
+    .s06-header { display: flex; flex-direction: column; gap: 14px; }
+    .s06-headline { font-size: 68px; line-height: 1; }
+    .s06-sub {
+      font-family: var(--sans);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 18px;
+      color: var(--cream-soft);
+      max-width: 980px;
+      line-height: 1.55;
+    }
+    .lineup-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 12px;
+      flex: 1;
+      width: 100%;
+      min-height: 0;
+    }
+    .lineup-cell {
+      position: relative;
+      overflow: hidden;
+      background: #1a1508;
+      display: flex;
+      flex-direction: column;
+    }
+    .lineup-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      /* default; per-cell overrides below */
+      object-position: center 22%;
+      filter: sepia(0.06) saturate(1.0) brightness(1.12) contrast(1.04);
+      z-index: 1;
+    }
+
+    /* Per-cell tuning so every face is clearly visible regardless of the
+       original framing. Photos vary heavily in lighting and composition.
+       object-position Y maps approximately to where the face sits in the
+       original portrait photo. */
+    .cell-gorilla   .lineup-img { object-position: center 22%; filter: sepia(0.06) saturate(1.0) brightness(1.08) contrast(1.04); }
+    .cell-suraj     .lineup-img { object-position: center 45%; filter: sepia(0.04) saturate(1.05) brightness(1.55) contrast(1.18); }
+    .cell-tina      .lineup-img { object-position: center 62%; filter: sepia(0.04) saturate(1.1)  brightness(1.55) contrast(1.18); }
+    .cell-bignyagz  .lineup-img { object-position: center 30%; filter: sepia(0.05) saturate(1.0) brightness(1.16) contrast(1.06); }
+    .cell-hiribae   .lineup-img { object-position: center 55%; filter: sepia(0.06) saturate(1.0) brightness(1.22) contrast(1.08); }
+    .cell-njeri     .lineup-img { object-position: center 30%; filter: sepia(0.05) saturate(1.0) brightness(1.10) contrast(1.04); }
+    .cell-kushy     .lineup-img { object-position: center 38%; filter: sepia(0.05) saturate(1.0) brightness(1.16) contrast(1.06); }
+    .cell-iv        .lineup-img { object-position: center 38%; filter: sepia(0.05) saturate(1.0) brightness(1.18) contrast(1.06); }
+    .cell-wandat    .lineup-img { object-position: center 30%; filter: sepia(0.05) saturate(1.0) brightness(1.12) contrast(1.05); }
+
+    .lineup-cell::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(8,8,6,0) 50%, rgba(8,8,6,0.94) 100%);
+      z-index: 2;
+    }
+    .lineup-name {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      padding: 14px 18px;
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: 0.32em;
+      color: var(--cream);
+      text-transform: uppercase;
+      z-index: 3;
+      background: linear-gradient(180deg, rgba(8,8,6,0) 0%, rgba(8,8,6,0.92) 100%);
+    }
+
+    /* ============================================================== */
+    /* SLIDE 07 — THE AUDIENCE                                         */
+    /* ============================================================== */
+    .s07-bg {
+      position: absolute; inset: 0;
+      background-image: url("../assets/images/martell/martell_glass_nightlife_01.jpg");
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.6) saturate(0.85);
+      z-index: 0;
+    }
+    .s07-veil {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(8,8,6,0.92) 0%, rgba(8,8,6,0.78) 50%, rgba(8,8,6,0.88) 100%);
+      z-index: 1;
+    }
+    .s07 { padding: 96px 120px; }
+    .s07-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 0.95fr;
+      gap: 96px;
+      height: 100%;
+      z-index: 3;
+    }
+    .s07-left { display: flex; flex-direction: column; justify-content: space-between; }
+    .s07-headline { font-size: 124px; line-height: 0.95; }
+    .s07-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 32px;
+      align-items: end;
+    }
+    .s07-stat .num {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 900;
+      font-size: 84px;
+      line-height: 1;
+      color: var(--cream);
+      white-space: nowrap;
+    }
+    .s07-stat .lbl {
+      margin-top: 14px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.32em;
+      color: var(--cream-mute);
+      text-transform: uppercase;
+      max-width: 220px;
+    }
+    .s07-right {
+      align-self: center;
+      background: rgba(245, 237, 214, 0.045);
+      border: 1px solid var(--rule);
+      backdrop-filter: blur(12px);
+      padding: 56px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .s07-panel-h { font-size: 56px; line-height: 1; }
+    .s07-panel-body {
+      font-family: var(--sans);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 19px;
+      line-height: 1.6;
+      color: var(--cream-soft);
+    }
+    .s07-list { display: flex; flex-direction: column; gap: 14px; margin-top: 12px; }
+    .s07-list li {
+      font-family: var(--mono);
+      font-size: 14px;
+      letter-spacing: 0.18em;
+      color: var(--cream-soft);
+      text-transform: uppercase;
+      list-style: none;
+      padding-left: 24px;
+      position: relative;
+    }
+    .s07-list li::before { content: "—"; position: absolute; left: 0; color: var(--cognac); }
+    .s07-watermark {
+      position: absolute;
+      left: 0; right: 0; bottom: 36px;
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 14px;
+      letter-spacing: 0.5em;
+      color: var(--cream);
+      opacity: 0.07;
+      text-transform: uppercase;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* ============================================================== */
+    /* SLIDE 08 — ALIGNMENT                                            */
+    /* ============================================================== */
+    .s08-bg {
+      position: absolute; inset: 0;
+      background-image: url("../assets/images/martell/martell_bottle_dark_01.jpg");
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.4) saturate(0.7);
+      z-index: 0;
+    }
+    .s08-veil {
+      position: absolute; inset: 0;
+      background: linear-gradient(90deg, rgba(8,8,6,0.95) 35%, rgba(8,8,6,0.65) 100%);
+      z-index: 1;
+    }
+    .s08 { padding: 96px 120px; }
+    .s08-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 96px;
+      height: 100%;
+      z-index: 3;
+    }
+    .s08-left { display: flex; flex-direction: column; justify-content: space-between; }
+    .s08-headline { font-size: 104px; line-height: 0.96; }
+    .s08-body {
+      font-family: var(--sans);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 21px;
+      line-height: 1.6;
+      color: var(--cream-soft);
+      max-width: 560px;
+    }
+    .s08-right { display: flex; flex-direction: column; gap: 36px; padding-top: 28px; }
+    .s08-block { display: flex; flex-direction: column; gap: 8px; }
+    .s08-block .h { font-family: var(--mono); font-size: 12px; letter-spacing: 0.42em; color: var(--cognac); text-transform: uppercase; }
+    .s08-block .num-row { display: grid; grid-template-columns: 56px 1fr; gap: 28px; align-items: start; }
+    .s08-block .num { font-family: var(--serif); font-style: italic; font-weight: 700; font-size: 42px; color: var(--cream-soft); line-height: 1; }
+    .s08-block .copy { font-family: var(--sans); font-style: italic; font-weight: 300; font-size: 19px; line-height: 1.55; color: var(--cream-soft); }
+    .s08-quote {
+      position: absolute;
+      left: 120px; right: 120px; bottom: 80px;
+      text-align: center;
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--cream-soft);
+      z-index: 3;
+    }
+    .s08-water {
+      position: absolute;
+      left: 120px; bottom: 36px;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.5em;
+      color: var(--cream-faint);
+      text-transform: uppercase;
+      z-index: 3;
+    }
+
+    /* ============================================================== */
+    /* SLIDE 09 — ACTIVATION                                           */
+    /* ============================================================== */
+    .s09 { padding: 96px 120px; }
+    .s09-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 64px;
+      height: 100%;
+    }
+    .s09-left { display: flex; flex-direction: column; gap: 28px; padding-top: 36px; }
+    .s09-headline { font-size: 96px; line-height: 0.96; }
+    .s09-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+      gap: 18px;
+    }
+    .card {
+      border: 1px solid var(--rule);
+      background: rgba(245, 237, 214, 0.025);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .card-img {
+      flex: 1.4;
+      overflow: hidden;
+      background: #14110a;
+      position: relative;
+    }
+    .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      /* FIX 07: uniform brightness across all 6 activation cards */
+      filter: sepia(0.12) saturate(0.9) brightness(0.88);
+    }
+    .card-body { padding: 16px 20px 18px; display: flex; flex-direction: column; gap: 6px; }
+    .card-title { font-family: var(--mono); font-size: 13px; letter-spacing: 0.32em; color: var(--cognac); text-transform: uppercase; }
+    .card-desc {
+      font-family: var(--sans);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.45;
+      color: var(--cream-soft);
+    }
+
+    /* ============================================================== */
+    /* SLIDE 10 — PROOF OF CONCEPT                                     */
+    /* ============================================================== */
+    .s10 { padding: 96px 120px; }
+    .s10-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+      height: 100%;
+    }
+    .s10-left { display: flex; flex-direction: column; gap: 28px; padding-top: 24px; }
+    .s10-headline { font-size: 96px; line-height: 0.96; }
+    .s10-events { display: flex; flex-direction: column; gap: 28px; margin-top: 8px; }
+    .s10-event { display: flex; flex-direction: column; gap: 8px; padding-top: 20px; border-top: 1px solid var(--rule); }
+    .s10-event .h { font-family: var(--mono); font-size: 14px; letter-spacing: 0.32em; color: var(--cream); text-transform: uppercase; }
+    .s10-event .d { font-family: var(--sans); font-style: italic; font-weight: 300; font-size: 18px; line-height: 1.55; color: var(--cream-soft); padding-left: 16px; }
+    .s10-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1.2fr 1fr;
+      gap: 12px;
+    }
+    .s10-photos > .ph { position: relative; overflow: hidden; background: #14110a; }
+    .s10-photos > .ph img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: sepia(0.14) saturate(0.9) brightness(0.95);
+    }
+    .s10-photos > .ph-hero { grid-column: 1 / span 2; }
+
+    /* ============================================================== */
+    /* SLIDE 11 — PARTNERS                                             */
+    /* ============================================================== */
+    .s11-bg {
+      position: absolute; inset: 0;
+      background-image: url("../assets/images/editorial/opening_void_01.jpg");
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.42) saturate(0.7);
+      z-index: 0;
+    }
+    .s11-veil {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(8,8,6,0.85) 0%, rgba(8,8,6,0.92) 100%);
+      z-index: 1;
+    }
+    .s11 { padding: 120px 120px 96px; }
+    .s11-inner {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      gap: 64px;
+    }
+    .s11-headline { font-size: 96px; line-height: 0.96; max-width: 1200px; }
+    .s11-partners {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 96px;
+      flex: 1;
+      align-items: center;
+    }
+    .partner-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+    }
+    .partner-logo-frame {
+      width: 100%;
+      max-width: 520px;
+      aspect-ratio: 3 / 1.2;
+      border: 1px solid var(--rule);
+      background: rgba(245, 237, 214, 0.025);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 48px;
+    }
+    .partner-logo-frame img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+    /* FIX 05: 720 Music Lab — typographic fallback */
+    .logo-720 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .logo-720 .num {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 900;
+      font-size: 96px;
+      color: var(--cream);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .logo-720 .lbl {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--cognac);
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+    }
+    .partner-name {
+      font-family: var(--mono);
+      font-size: 16px;
+      letter-spacing: 0.42em;
+      color: var(--cream);
+      text-transform: uppercase;
+    }
+    .partner-role {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.34em;
+      color: var(--cognac);
+      text-transform: uppercase;
+    }
+    .s11-handle {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      align-items: center;
+      padding-top: 24px;
+    }
+    .s11-handle .ig {
+      width: 22px; height: 22px;
+      filter: brightness(0) invert(1) opacity(0.7);
+    }
+    .s11-handle span {
+      font-family: var(--mono);
+      font-size: 15px;
+      letter-spacing: 0.34em;
+      color: var(--cream-soft);
+      text-transform: lowercase;
+    }
+
+    /* ============================================================== */
+    /* SLIDE 12 — INVESTMENT                                           */
+    /* ============================================================== */
+    .s12 {
+      padding: 56px 120px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      height: 100%;
+    }
+    .s12-top { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .s12-total {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 900;
+      font-size: 168px;
+      line-height: 1;
+      color: var(--cream);
+      letter-spacing: -0.01em;
+    }
+    .s12-structured { font-family: var(--sans); font-style: italic; font-weight: 300; font-size: 18px; color: var(--cream-soft); }
+    .s12-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 0; }
+    .s12-col { display: flex; flex-direction: column; gap: 14px; }
+    .s12-pill {
+      align-self: flex-start;
+      padding: 10px 20px;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.32em;
+      color: var(--bg);
+      background: var(--cognac);
+      text-transform: uppercase;
+    }
+    .s12-pill.outline { background: transparent; color: var(--cognac); border: 1px solid var(--cognac); }
+    .s12-col .num {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 900;
+      font-size: 72px;
+      line-height: 1;
+      color: var(--cream);
+    }
+    .s12-list { display: flex; flex-direction: column; gap: 6px; }
+    .s12-list li {
+      list-style: none;
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      color: var(--cream-soft);
+      padding-left: 24px;
+      position: relative;
+      line-height: 1.45;
+    }
+    .s12-list li::before { content: "—"; position: absolute; left: 0; color: var(--cream-mute); }
+    .s12-framework {
+      margin-top: 8px;
+      border: 1px solid var(--rule);
+      padding: 20px 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      background: rgba(245, 237, 214, 0.025);
+    }
+    .s12-framework-h {
+      grid-column: 1 / span 2;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.42em;
+      color: var(--cognac);
+      text-transform: uppercase;
+      margin-bottom: -2px;
+    }
+    .s12-framework-block .h {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--cream);
+      margin-bottom: 4px;
+    }
+    .s12-framework-block .c {
+      font-family: var(--sans);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.5;
+      color: var(--cream-soft);
+    }
+
+    /* ============================================================== */
+    /* SLIDE 13 — ROLLOUT                                              */
+    /* ============================================================== */
+    .s13 { padding: 96px 120px; display: flex; flex-direction: column; gap: 64px; }
+    .s13-header { display: flex; flex-direction: column; gap: 20px; }
+    .s13-headline { font-size: 116px; line-height: 0.96; }
+    .s13-sub { font-family: var(--sans); font-style: italic; font-weight: 300; font-size: 20px; color: var(--cream-soft); max-width: 900px; }
+    .s13-phases { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; margin-top: 16px; }
+    .s13-phase { display: flex; flex-direction: column; gap: 18px; padding-top: 8px; }
+    .s13-phase .marker { display: flex; align-items: center; gap: 12px; }
+    .s13-phase .marker .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--cognac); }
+    .s13-phase .marker .meta { font-family: var(--mono); font-size: 12px; letter-spacing: 0.32em; color: var(--cognac); text-transform: uppercase; }
+    .s13-phase .title { font-family: var(--mono); font-size: 16px; letter-spacing: 0.32em; color: var(--cream); text-transform: uppercase; }
+    .s13-phase .desc { font-family: var(--sans); font-style: italic; font-weight: 300; font-size: 16px; line-height: 1.5; color: var(--cream-soft); }
+
+    /* ============================================================== */
+    /* SLIDE 14 — CLOSING                                              */
+    /* ============================================================== */
+    .s14-bg {
+      position: absolute; inset: 0;
+      background-image: url("../assets/images/martell/martell_pour_african_01.jpg");
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.5) saturate(0.85);
+      z-index: 0;
+    }
+    .s14-veil {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 60% 50%, rgba(8,8,6,0.5) 0%, rgba(8,8,6,0.88) 70%, rgba(8,8,6,0.96) 100%);
+      z-index: 1;
+    }
+    .s14 {
+      position: relative;
+      z-index: 3;
+      padding: 0;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .s14-inner {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+    }
+    .s14-headline { font-size: 152px; line-height: 0.95; position: relative; }
+    .s14-headline .crafted {
+      position: absolute;
+      right: -240px;
+      bottom: 36px;
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 700;
+      font-size: 40px;
+      color: var(--cream-soft);
+      opacity: 0.42;
+      white-space: nowrap;
+    }
+    .s14-contact { display: flex; flex-direction: column; gap: 8px; align-items: center; }
+    .s14-contact .row { display: flex; align-items: center; gap: 12px; }
+    .s14-contact .ig {
+      width: 22px; height: 22px;
+      filter: brightness(0) invert(1) opacity(0.85);
+    }
+    .s14-contact span, .s14-contact a {
+      font-family: var(--mono);
+      font-size: 18px;
+      letter-spacing: 0.32em;
+      color: var(--cream-soft);
+      text-decoration: none;
+      text-transform: lowercase;
+    }
+
+    /* ============================================================== */
+    /* PRINT — single landscape page per slide                         */
+    /* ============================================================== */
+    @page {
+      size: 1920px 1080px;
+      margin: 0;
+    }
+    @media print {
+      html, body { background: var(--bg); }
+      .deck { gap: 0; padding: 0; }
+      .slide {
+        box-shadow: none;
+        margin: 0;
+        page-break-after: always;
+        max-height: 1080px;
+        overflow: hidden;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="deck">
+
+    <!-- ================================================================ -->
+    <!-- SLIDE 01 — COVER                                                  -->
+    <!-- ================================================================ -->
+    <section class="slide" id="s01">
+      <div class="s01-grid">
+        <div class="s01-left">
+          <img class="s01-corner-mark" src="../assets/brand/sandile-logo-white.png" alt="Sandile" />
+          <div class="kicker">Sponsorship Proposal</div>
+          <h1 class="s01-h1">SANDILE<br />AFTER&nbsp;HOURS</h1>
+          <div class="s01-tagline">× &nbsp;Martell&nbsp;&nbsp;Cognac</div>
+          <div class="s01-meta">Masshouse Nairobi &nbsp;·&nbsp; Ngong Racecourse &nbsp;·&nbsp; 26th September 2026</div>
+        </div>
+        <div class="s01-right">
+          <img class="s01-photo" src="assets-sourced/morda_press_01.png" alt="MÖRDA portrait" />
+          <div class="s01-photo-veil"></div>
+        </div>
+      </div>
+      <div class="footer-bar">
+        <img class="sandile-mark" src="../assets/brand/sandile-logo-white.png" alt="Sandile" />
+        <div class="center-line">Featuring Mörda</div>
+        <img class="martell-mark" src="assets-sourced/martell_official.svg" alt="Martell Cognac" />
+      </div>
+      <div class="grain"></div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- SLIDE 02 — ABOUT SANDILE                                          -->
+    <!-- ================================================================ -->
+    <section class="slide s02" id="s02">
+      <div class="s02-grid">
+        <div class="s02-left">
+          <div class="kicker">About Sandile</div>
+          <h2 class="s02-headline">NOT A PARTY.<br />AN ATMOSPHERE.</h2>
+          <p class="s02-body">
+            Sandile is a Nairobi-based Afrohouse and electronic music experience platform.
+            Built around music-first culture, intentional nightlife, immersive storytelling,
+            and elevated social experience.
+          </p>
+          <div class="s02-stats">
+            <div class="stat">
+              <div class="stat-num">800+</div>
+              <div class="stat-lbl">Year One Attendees</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">3</div>
+              <div class="stat-lbl">Sold Out Shows</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">21—34</div>
+              <div class="stat-lbl">Core Audience Age</div>
+            </div>
+          </div>
+        </div>
+        <div class="s02-photos">
+          <div class="ph ph-1"><img src="../assets/events/sundowner/sundowner_crowd_01.jpg" alt="" /></div>
+          <div class="ph ph-2"><img src="../assets/images/editorial/afrohouse_movement_01.jpg" alt="" /></div>
+          <div class="ph ph-3"><img src="../assets/events/anniversary/anniv_sykes_01.jpg" alt="" /></div>
+        </div>
+      </div>
+      <div class="page-index">02 / 14</div>
+      <div class="grain"></div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- SLIDE 03 — THE CULTURAL SHIFT (full bleed)                        -->
+    <!-- ================================================================ -->
+    <section class="slide" id="s03">
+      <div class="s03-bg"></div>
+      <div class="s03-veil"></div>
+      <div class="s03-content">
+        <div class="kicker">The Cultural Shift</div>
+        <div>
+          <h2 class="s03-headline">
+            OONTZ HAS ALWAYS HAD ENERGY.<br />
+            <span class="accent">SANDILE IS MAKING IT SEXY.</span>
+          </h2>
+          <p class="s03-body">
+            Across Nairobi, Johannesburg, Lagos and Cape Town, a new generation of nightlife audiences is emerging — culturally aware,
+            digitally expressive, fashion-conscious and experience-driven. House music — what Nairobi's community knows as oontz —
+            has always carried raw, communal energy. A dance floor full of people losing themselves in the groove. Sandile is not here
+            to remove that energy; Sandile is here to dress it. Afrohouse and Amapiano have become social languages. The dance floor
+            has become a cultural meeting point.
+          </p>
+        </div>
+        <div class="s03-tags">
+          <span class="s03-tag">Culturally Aware</span>
+          <span class="s03-tag">Fashion Forward</span>
+          <span class="s03-tag">Experience Driven</span>
+          <span class="s03-tag">Digitally Expressive</span>
+        </div>
+      </div>
+      <div class="page-index">03 / 14</div>
+      <div class="grain"></div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- SLIDE 04 — THE CONCEPT                                            -->
+    <!-- ================================================================ -->
+    <section class="slide s04" id="s04">
+      <div class="s04-grid">
+        <div class="s04-left">
+          <div class="kicker">The Concept</div>
+          <h2 class="s04-headline">AN INTENTIONAL<br />NIGHTLIFE<br />EXPERIENCE.</h2>
+          <div class="s04-specs-stack">
+            <div class="s04-spec">
+              <div class="label">Concept</div>
+              <div class="value">A premium open-air, day-into-night experience from 2 PM to midnight.</div>
+            </div>
+            <div class="s04-spec">
+              <div class="label">Audience</div>
+              <div class="value">4,000–5,000 socially active, style-forward revellers.</div>
+            </div>
+            <div class="s04-spec">
+              <div class="label">Venue</div>
+              <div class="value">Masshouse Nairobi, Ngong Racecourse.</div>
+            </div>
+          </div>
+        </div>
+        <!-- FIX 04: Slide 04 right-side image grid using repo assets only -->
+        <div class="s04-photos">
+          <div class="ph ph-top">
+            <img src="../assets/images/editorial/venue_establishing_01.jpg" alt="Masshouse Nairobi venue establishing" />
+          </div>
+          <div class="ph">
+            <img src="../assets/events/sundowner/sundowner_atmosphere_01.jpg" alt="Sandile Sundowner atmosphere" />
+          </div>
+          <div class="ph">
+            <img src="../assets/events/b2b%20jungle/b2b_crowd_01.jpg" alt="B2B Jungle crowd" />
+          </div>
+        </div>
+      </div>
+      <div class="page-index">04 / 14</div>
+      <div class="grain"></div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- SLIDE 05 — HEADLINING ARTIST                                      -->
+    <!-- ================================================================ -->
+    <section class="slide" id="s05">
+      <div class="s05-grid">
+        <div class="s05-left">
+          <div class="kicker">Headlining Artist</div>
+          <h2 class="s05-name">MÖRDA</h2>
+          <div class="s05-origin">Johannesburg, South Africa</div>
+          <p class="s05-bio">
+            One of South Africa's defining Afrohouse artists. A sonic architect of emotionally
+            immersive dance music. MÖRDA does not perform sets — he builds rooms.
+          </p>
+          <p class="s05-bio">
+            His rhythm, atmosphere and emotional depth mirror the Sandile experience itself,
+            and the same values that define what Martell stands for in a glass.
+          </p>
+          <div class="s05-tags">
+            <span class="s03-tag">Afrohouse</span>
+            <span class="s03-tag">Emotional Architecture</span>
+            <span class="s03-tag">South Africa</span>
+          </div>
+        </div>
+        <div class="s05-right">
+          <img class="s05-photo" src="assets-sourced/morda_press_02.png" alt="MÖRDA — Johannesburg" />
+          <div class="s05-veil"></div>
+        </div>
+      </div>
+      <div class="page-index" style="color: rgba(245,237,214,0.55);">05 / 14</div>
+      <div class="grain"></div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- SLIDE 06 — THE CURATION                                           -->
+    <!-- FIX 01: rebuilt 3x3 grid, no inline styles, all 9 selectors       -->
+    <!-- ================================================================ -->
+    <section class="slide s06" id="s06">
+      <div class="s06-header">
+        <div class="kicker">The Curation</div>
+        <h2 class="s06-headline">9 NAIROBI SELECTORS. <span class="accent">ONE NIGHT.</span></h2>
+        <p class="s06-sub">
+          A carefully curated B2B lineup from the city's most distinctive selectors —
+          each bringing a defined sonic identity to the night.
+        </p>
+      </div>
+      <div class="lineup-grid">
+        <div class="lineup-cell cell-gorilla">
+          <img class="lineup-img" src="../assets/lineup/gorilla_face_01.jpg" alt="Gorilla Face" />
+          <div class="lineup-name">Gorilla Face</div>
+        </div>
+        <div class="lineup-cell cell-suraj">
+          <img class="lineup-img" src="../assets/lineup/suraj_01.jpg" alt="Suraj" />
+          <div class="lineup-name">Suraj</div>
+        </div>
+        <div class="lineup-cell cell-tina">
+          <img class="lineup-img" src="../assets/lineup/tina_ardor_01%20.jpg" alt="Tina Ardor" />
+          <div class="lineup-name">Tina Ardor</div>
+        </div>
+        <div class="lineup-cell cell-bignyagz">
+          <img class="lineup-img" src="../assets/lineup/bignyagz_01.jpg" alt="Bignyagz" />
+          <div class="lineup-name">Bignyagz</div>
+        </div>
+        <div class="lineup-cell cell-hiribae">
+          <img class="lineup-img" src="../assets/lineup/hiribae_01.jpg" alt="Hiribae" />
+          <div class="lineup-name">Hiribae</div>
+        </div>
+        <div class="lineup-cell cell-njeri">
+          <img class="lineup-img" src="../assets/lineup/njeri_wa_babaa_01.jpg" alt="Njeri wa Babaa" />
+          <div class="lineup-name">Njeri wa Babaa</div>
+        </div>
+        <div class="lineup-cell cell-kushy">
+          <img class="lineup-img" src="../assets/lineup/kushy_01.jpg" alt="Kushy" />
+          <div class="lineup-name">Kushy</div>
+        </div>
+        <div class="lineup-cell cell-iv">
+          <img class="lineup-img" src="../assets/lineup/iv_01.jpg" alt="IV" />
+          <div class="lineup-name">IV</div>
+        </div>
+        <div class="lineup-cell cell-wandat">
+          <img class="lineup-img" src="../assets/lineup/wandat_01.jpg" alt="Wandat" />
+          <div class="lineup-name">Wandat</div>
+        </div>
+      </div>
+      <div class="page-index">06 / 14</div>
+      <div class="grain"></div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- SLIDE 07 — THE AUDIENCE                                           -->
+    <!-- FIX 02: background image, correct stat label, single watermark    -->
+    <!-- ================================================================ -->
+    <section class="slide" id="s07">
+      <div class="s07-bg"></div>
+      <div class="s07-veil"></div>
+      <div class="s07">
+        <div class="s07-grid">
+          <div class="s07-left">
+            <div style="display:flex; flex-direction:column; gap:32px;">
+              <div class="kicker">The Audience</div>
+              <h2 class="s07-headline">THE NIGHT<br />BELONGS<br />TO THE<br /><span class="accent">INTENTIONAL.</span></h2>
+            </div>
+            <div class="s07-stats">
+              <div class="s07-stat">
+                <div class="num">800+</div>
+                <div class="lbl">Year One Attendees</div>
+              </div>
+              <div class="s07-stat">
+                <div class="num">21—34</div>
+                <div class="lbl">Core Audience Age Range. Martell's LPA Target.</div>
+              </div>
+              <div class="s07-stat">
+                <div class="num">72%</div>
+                <div class="lbl">Digitally Active, High Social Reach</div>
+              </div>
+            </div>
+          </div>
+          <aside class="s07-right">
+            <h3 class="s07-panel-h">MARTELL'S IDEAL<br /><span class="accent">CONSUMER.</span></h3>
+            <p class="s07-panel-body">
+              Sandile curates a sophisticated, engaged audience that aligns perfectly with Martell's brand values.
+            </p>
+            <ul class="s07-list">
+              <li>Discerning &amp; Culturally Aware</li>
+              <li>Premium Lifestyle Enthusiasts</li>
+              <li>Socially Active &amp; Influential</li>
+              <li>Seeking Elevated Experiences</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+      <div class="s07-watermark">The night belongs to the intentional.</div>
+      <div class="page-index">07 / 14</div>
+      <div class="grain"></div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- SLIDE 08 — THE ALIGNMENT                                          -->
+    <!-- ================================================================ -->
+    <section class="slide" id="s08">
+      <div class="s08-bg"></div>
+      <div class="s08-veil"></div>
+      <div class="s08">
+        <div class="s08-grid">
+          <div class="s08-left">
+            <div style="display:flex; flex-direction:column; gap:32px;">
+              <div class="kicker">The Alignment</div>
+              <h2 class="s08-headline">BOTH BUILT ON<br />THE SAME<br /><span class="accent">BELIEF.</span></h2>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:18px; max-width:560px;">
+              <p class="s08-body">
+                Martell's positioning naturally aligns with the Sandile experience. Both represent
+                sophistication, craftsmanship, elevated taste, and intentional experience design.
+              </p>
+              <p class="s08-body">
+                Martell has spent over 300 years building something rare — a legacy that feels both
+                timeless and alive. Sandile is building something in real time: a cultural platform
+                that feels both rooted and forward-facing.
+              </p>
+              <p class="s08-body">
+                After Hours creates a space where Martell can exist not as an advertisement, but as
+                part of the emotional architecture of the night itself.
+              </p>
+            </div>
+          </div>
+          <div class="s08-right">
+            <div class="s08-block">
+              <div class="h">Brand Alignment</div>
+              <div class="num-row">
+                <div class="num">1.</div>
+                <div class="copy">A premium Afrohouse experience embodying sophistication, intentionality, and excellence — mirroring Martell's brand narrative: crafted taste meets cultural elevation.</div>
+              </div>
+            </div>
+            <div class="s08-block">
+              <div class="h">Audience Fit</div>
+              <div class="num-row">
+                <div class="num">2.</div>
+                <div class="copy">Trendsetters, professionals, creatives, and culture shapers — the 18–34 LPA consumer Martell is actively recruiting across Africa.</div>
+              </div>
+            </div>
+            <div class="s08-block">
+              <div class="h">Lifestyle Integration</div>
+              <div class="num-row">
+                <div class="num">3.</div>
+                <div class="copy">Opportunity for immersive cognac experiences, elevated lounge setups, and storytelling moments that bring Martell's heritage to life inside a living cultural moment.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="s08-quote">"This isn't just a drink sponsorship — it's a cultural partnership."</div>
+      <div class="s08-water">Martell. 1715.</div>
+      <div class="page-index">08 / 14</div>
+      <div class="grain"></div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- SLIDE 09 — ACTIVATION                                             -->
+    <!-- ================================================================ -->
+    <section class="slide s09" id="s09">
+      <div class="s09-grid">
+        <div class="s09-left">
+          <div class="kicker">Activation</div>
+          <h2 class="s09-headline">MARTELL<br />BECOMES<br />THE <span class="accent">NIGHT.</span></h2>
+          <p class="s02-body" style="max-width:440px; font-size:19px; margin-top:12px;">
+            Six designed moments that translate Martell's craft into the language of the dance floor.
+          </p>
+        </div>
+        <div class="s09-cards">
+          <div class="card">
+            <div class="card-img"><img src="../assets/images/brand%20intergration/MARTELL_DJ_INTEGRATION_01.JPG" alt="" /></div>
+            <div class="card-body">
+              <div class="card-title">The Martell Serve</div>
+              <div class="card-desc">A dedicated Martell bar serving curated cognac rituals.</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-img"><img src="../assets/images/brand%20intergration/MARTELL_TASTING_MOMENT_01.JPG" alt="" /></div>
+            <div class="card-body">
+              <div class="card-title">Tasting Moments</div>
+              <div class="card-desc">Guided experiences introducing Martell to new premium consumers.</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-img"><img src="../assets/images/martell/martell_lounge_setup_01.jpg" alt="" /></div>
+            <div class="card-body">
+              <div class="card-title">The Martell Lounge</div>
+              <div class="card-desc">A premium VIP environment — the most coveted space.</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-img"><img src="../assets/images/brand%20intergration/MARTELL_DECOR_DETAIL_01.JPG" alt="" /></div>
+            <div class="card-body">
+              <div class="card-title">Atmospheric Storytelling</div>
+              <div class="card-desc">Martell woven into décor, lighting, and sensory design.</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-img"><img src="../assets/images/brand%20intergration/MARTELL_CONTENT_MOMENT_01.JPG" alt="" /></div>
+            <div class="card-body">
+              <div class="card-title">Social Content Moments</div>
+              <div class="card-desc">Designed environments generating organic brand content.</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-img"><img src="../assets/images/brand%20intergration/MARTELL_PHOTOMOMENT_01.JPG" alt="" /></div>
+            <div class="card-body">
+              <div class="card-title">The Photo Moment</div>
+              <div class="card-desc">A branded installation designed for organic social sharing.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page-index">09 / 14</div>
+      <div class="grain"></div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- SLIDE 10 — PROOF OF CONCEPT                                       -->
+    <!-- ================================================================ -->
+    <section class="slide s10" id="s10">
+      <div class="s10-grid">
+        <div class="s10-left">
+          <div class="kicker">Proof of Concept</div>
+          <h2 class="s10-headline">WE HAVE DONE<br /><span class="accent">THIS BEFORE.</span></h2>
+          <div class="s10-events">
+            <div class="s10-event">
+              <div class="h">Sandile Sundowner</div>
+              <div class="d">An intimate sunset Afrohouse experience. The beginning of the Sandile story.</div>
+            </div>
+            <div class="s10-event">
+              <div class="h">B2B in the Jungle</div>
+              <div class="d">KODA Nairobi × 720 Music Lab. A collaborative electronic music experience.</div>
+            </div>
+            <div class="s10-event">
+              <div class="h">Sandile Anniversary</div>
+              <div class="d">Nairobi · 800+ attendees · SOLD OUT · Headlined by Sykes.</div>
+            </div>
+          </div>
+        </div>
+        <div class="s10-photos">
+          <div class="ph ph-hero"><img src="../assets/events/anniversary/anniv_sykes_01.jpg" alt="" /></div>
+          <div class="ph"><img src="../assets/events/b2b%20jungle/b2b_crowd_01.jpg" alt="" /></div>
+          <div class="ph"><img src="../assets/events/b2b%20jungle/b2b_dj_01.jpg" alt="" /></div>
+          <div class="ph"><img src="../assets/events/sundowner/sundowner_atmosphere_01.jpg" alt="" /></div>
+          <div class="ph"><img src="../assets/events/anniversary/anniversary_sykes_02.jpg" alt="" /></div>
+        </div>
+      </div>
+      <div class="page-index">10 / 14</div>
+      <div class="grain"></div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- SLIDE 11 — OUR PARTNERS                                           -->
+    <!-- ================================================================ -->
+    <section class="slide" id="s11">
+      <div class="s11-bg"></div>
+      <div class="s11-veil"></div>
+      <div class="s11">
+        <div class="s11-inner">
+          <div style="display:flex; flex-direction:column; gap:24px;">
+            <div class="kicker">Our Partners</div>
+            <h2 class="s11-headline">BRANDS THAT HAVE<br /><span class="accent">TRUSTED SANDILE.</span></h2>
+          </div>
+          <div class="s11-partners">
+            <div class="partner-card">
+              <div class="partner-logo-frame">
+                <img src="assets-sourced/soko_logo.png" alt="Soko.net" />
+              </div>
+              <div class="partner-name">Soko.net</div>
+              <div class="partner-role">Ticketing &amp; Access Partner</div>
+            </div>
+            <div class="partner-card">
+              <div class="partner-logo-frame">
+                <!-- FIX 05: typographic 720 Music Lab treatment -->
+                <div class="logo-720">
+                  <span class="num">720</span>
+                  <span class="lbl">Music&nbsp;Lab</span>
+                </div>
+              </div>
+              <div class="partner-name">720 Music Lab</div>
+              <div class="partner-role">Creative &amp; Digital Partner</div>
+            </div>
+          </div>
+          <div class="s11-handle">
+            <img class="ig" src="assets-sourced/instagram_icon.png" alt="Instagram" />
+            <span>@sandile.ke_</span>
+          </div>
+        </div>
+      </div>
+      <div class="page-index">11 / 14</div>
+      <div class="grain"></div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- SLIDE 12 — THE PARTNERSHIP INVESTMENT                             -->
+    <!-- ================================================================ -->
+    <section class="slide s12" id="s12">
+      <div class="s12-top">
+        <div class="kicker">The Partnership Investment</div>
+        <div class="label-mono" style="font-size:14px;">Total Partnership Value</div>
+        <div class="s12-total">KES 5,000,000</div>
+        <div class="s12-structured">Structured as follows:</div>
+      </div>
+      <div class="s12-columns">
+        <div class="s12-col">
+          <div class="s12-pill">Cash Contribution</div>
+          <div class="num">KES 3,000,000</div>
+          <ul class="s12-list">
+            <li>International artist execution (MÖRDA)</li>
+            <li>Premium production and venue transformation</li>
+            <li>Marketing campaign rollout across all platforms</li>
+            <li>Cinematic content production and post-event recap</li>
+            <li>Luxury audience experience design</li>
+          </ul>
+        </div>
+        <div class="s12-col">
+          <div class="s12-pill outline">Value in Kind</div>
+          <div class="num">KES 2,000,000</div>
+          <ul class="s12-list">
+            <li>Martell product allocation for signature bar &amp; VIP</li>
+            <li>Branded hospitality materials and premium glassware</li>
+            <li>Co-branded event collateral and campaign assets</li>
+            <li>Martell activation support for tasting and lounge</li>
+            <li>Minimum 2-week Digital OOH and social media push</li>
+            <li>Brand influencer amplification (min. 5 influencers)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="s12-framework">
+        <div class="s12-framework-h">Partnership Framework</div>
+        <div class="s12-framework-block">
+          <div class="h">Exclusivity &amp; Brand Integration</div>
+          <div class="c">Martell to be recognised as the Official Cognac Partner with full category exclusivity. Premium branding across key touchpoints: Martell Lounge, bar area, and digital assets.</div>
+        </div>
+        <div class="s12-framework-block">
+          <div class="h">Commercial Alignment</div>
+          <div class="c">All on-ground vending executed through Martell's authorised distributors. Joint tracking of sales throughput (NSV) to measure performance and mutual value.</div>
+        </div>
+      </div>
+      <div class="page-index">12 / 14</div>
+      <div class="grain"></div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- SLIDE 13 — THE ROLLOUT                                            -->
+    <!-- ================================================================ -->
+    <section class="slide s13" id="s13">
+      <div class="s13-header">
+        <div class="kicker">The Rollout</div>
+        <h2 class="s13-headline">THE ROAD TO<br /><span class="accent">AFTER HOURS.</span></h2>
+        <p class="s13-sub">A structured 12-week rollout ensuring maximum cultural impact and brand visibility.</p>
+      </div>
+      <div class="s13-phases">
+        <div class="s13-phase">
+          <div class="marker"><span class="dot"></span><span class="meta">Phase 01 · Week 1–4</span></div>
+          <div class="title">Announcement</div>
+          <div class="desc">Social teaser campaign, influencer onboarding, and official event announcement.</div>
+        </div>
+        <div class="s13-phase">
+          <div class="marker"><span class="dot"></span><span class="meta">Phase 02 · Week 5–8</span></div>
+          <div class="title">The Build-Up</div>
+          <div class="desc">Content series highlighting MÖRDA, artist spotlights, and early-bird ticket release.</div>
+        </div>
+        <div class="s13-phase">
+          <div class="marker"><span class="dot"></span><span class="meta">Phase 03 · Week 9–11</span></div>
+          <div class="title">Peak Hype</div>
+          <div class="desc">OOH campaign, radio push, and immersive brand storytelling.</div>
+        </div>
+        <div class="s13-phase">
+          <div class="marker"><span class="dot"></span><span class="meta">Phase 04 · Week 12</span></div>
+          <div class="title">The Event</div>
+          <div class="desc">On-ground execution, VIP hosting, and live content capture.</div>
+        </div>
+        <div class="s13-phase">
+          <div class="marker"><span class="dot"></span><span class="meta">Post-Event</span></div>
+          <div class="title">The Recap</div>
+          <div class="desc">Cinematic highlight video, brand reporting, and community engagement.</div>
+        </div>
+      </div>
+      <div class="page-index">13 / 14</div>
+      <div class="grain"></div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- SLIDE 14 — CLOSING                                                -->
+    <!-- ================================================================ -->
+    <section class="slide" id="s14">
+      <div class="s14-bg"></div>
+      <div class="s14-veil"></div>
+      <div class="s14">
+        <div class="s14-inner">
+          <h2 class="s14-headline">
+            LET'S BUILD THE<br />ATMOSPHERE<br /><span class="accent">TOGETHER.</span>
+            <span class="crafted">crafted since 1715</span>
+          </h2>
+          <div class="s14-contact">
+            <div class="row">
+              <img class="ig" src="assets-sourced/instagram_icon.png" alt="Instagram" />
+              <span>@sandile.ke_</span>
+            </div>
+            <div class="row">
+              <a href="mailto:hello@sandile.ke">hello@sandile.ke</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bar">
+        <img class="sandile-mark" src="../assets/brand/sandile-logo-white.png" alt="Sandile" />
+        <div class="center-line">A cultural partnership.</div>
+        <img class="martell-mark" src="assets-sourced/martell_official.svg" alt="Martell Cognac" />
+      </div>
+      <div class="page-index" style="bottom:120px;">14 / 14</div>
+      <div class="grain"></div>
+    </section>
+
+  </main>
+</body>
+</html>
